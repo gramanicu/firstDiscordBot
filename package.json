@@ -1,0 +1,23 @@
+{
+  "name": "firstbot",
+  "version": "0.0.1",
+  "description": "a discord bot used to learn the api",
+  "main": "index.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "run": "node ./dist/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gramanicu/fistDiscordBot.git"
+  },
+  "author": "Grama Nicolae",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gramanicu/fistDiscordBot/issues"
+  },
+  "homepage": "https://github.com/gramanicu/fistDiscordBot#readme",
+  "dependencies": {
+    "discord.js": "^11.5.1"
+  }
+}

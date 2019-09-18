@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "commonjs",
+        "outDir": "dist",
+        "strict": true,
+        "skipLibCheck": true,
+        "strictNullChecks": true,
+        "inlineSourceMap": true
+    },
+    "include": [
+        "src"
+    ],
+    "exclude": [
+        "node_modules",
+        "src/configTemplate.ts"
+    ]
+}
