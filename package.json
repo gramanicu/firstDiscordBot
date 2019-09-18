@@ -8,7 +8,7 @@
   },
   "scripts": {
     "build-ts": "tsc",
-    "postinstall": "npm run build-ts",
+    "postinstall": "[ -f /etc/resolv.conf ] && echo 'Config Exists' || cp src/configTemplate.ts src/config.ts || npm run build-ts",
     "start": "npm run serve",
     "serve": "node build/index.js",
     "watch-node": "nodemon dist/server.js",
