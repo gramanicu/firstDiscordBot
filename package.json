@@ -7,7 +7,12 @@
     "node": "10.x"
   },
   "scripts": {
-    "web": "node build/index.js"
+    "build-ts": "tsc",
+    "postinstall": "npm run build-ts",
+    "start": "npm run serve",
+    "serve": "node build/index.js",
+    "watch-node": "nodemon dist/server.js",
+    "watch-ts": "tsc -w"
   },
   "repository": {
     "type": "git",
