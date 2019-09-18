@@ -7,8 +7,7 @@
     "node": "10.x"
   },
   "scripts": {
-    "start": "node build/index.js",
-    "build": "tsc"
+    "web": "node build/index.js"
   },
   "repository": {
     "type": "git",
@@ -22,7 +21,6 @@
   "homepage": "https://github.com/gramanicu/fistDiscordBot#readme",
   "dependencies": {
     "@types/node": "^12.7.5",
-    "discord.js": "^11.5.1",
-    "typescript": "^3.6.3"
+    "discord.js": "^11.5.1"
   }
 }
