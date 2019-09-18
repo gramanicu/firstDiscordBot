@@ -4,7 +4,8 @@
   "description": "a discord bot used to learn the api",
   "main": "build/index.ts",
   "engines": {
-    "node": "10.x"
+    "node": "10.x",
+    "npm": "6.9.x"
   },
   "scripts": {
     "build-ts": "tsc",

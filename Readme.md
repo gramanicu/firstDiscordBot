@@ -1,4 +1,4 @@
-# Fist Discord Bot
+# Fist Discord Bot - [![Build Status](https://travis-ci.com/gramanicu/firstDiscordBot.svg?branch=master)](https://travis-ci.com/gramanicu/firstDiscordBot) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/c8cc752c20b642329609ca221986acdf)](https://www.codacy.com/manual/gramanicu/firstDiscordBot?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=gramanicu/firstDiscordBot&amp;utm_campaign=Badge_Grade) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ![Logo](./Images/BlueBotSmall.png "Logo")
 

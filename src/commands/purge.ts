@@ -14,7 +14,9 @@ export default class purge implements IBotCommand {
         return command === this._command;
     }
 
-    async runCommand(args: string[], msgObject: Discord.Message, client: Discord.Client): Promise<void> {
+    public async runCommand(args: string[], msgObject: Discord.Message, client: Discord.Client): Promise<void> {
+        const PURGELIMIT = 100;
+        
         // Make sure that the person using the command is an Admin
         if (!msgObject.member.hasPermission("ADMINISTRATOR")) {
             msgObject.channel.send(`Sorry ${msgObject.author.username} but this command is only for Admins`)
@@ -51,8 +53,8 @@ export default class purge implements IBotCommand {
         numberOfMessages = Math.round(numberOfMessages);
         numberOfMessages = numberOfMessages + 1;
 
-        // Limit the number to 100 (Discord Limit)
-        numberOfMessages = numberOfMessages > 100 ? 100 : numberOfMessages;
+        // Limit the number to PURGELIMIT (Discord Limit)
+        numberOfMessages = numberOfMessages > PURGELIMIT ? PURGELIMIT : numberOfMessages;
 
 
         // Deletes the desired number of messages

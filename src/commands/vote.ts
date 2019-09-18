@@ -2,9 +2,9 @@ import * as Discord from "discord.js"
 import { IBotCommand } from "../api";
 
 export default class vote implements IBotCommand {
-    private readonly _command = "vote"
+    private readonly _command: string = "vote"
 
-    help(): string {
+    public help(): string {
         // The description of the command
         return "Creates a basic vote";
     }
@@ -45,13 +45,15 @@ export default class vote implements IBotCommand {
 
         // Wait for the specified amount of time the vote results
         const results = await (voteMessage as Discord.Message).awaitReactions(filter, { time: timeout })
+        
+        const initialVoteCount = 0;
 
         // Create a embed with the vote results
         let resultsEmbed = new Discord.RichEmbed()
             .setTitle("Vote Results")
             .setDescription(`Results For The vote: ${args.join(" ")}`)
-            .addField("✅:", `${results.get("✅") ? results.get("✅").count - 1 : 0} Votes`)
-            .addField("❎:", `${results.get("❎") ? results.get("❎").count - 1 : 0} Votes`)
+            .addField("✅:", `${results.get("✅") ? results.get("✅").count - 1 : initialVoteCount} Votes`)
+            .addField("❎:", `${results.get("❎") ? results.get("❎").count - 1 : initialVoteCount} Votes`)
 
         // Send the vote results
         msgObject.channel.send(resultsEmbed);

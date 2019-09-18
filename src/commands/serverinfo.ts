@@ -4,7 +4,7 @@ import { IBotCommand } from "../api";
 export default class serverinfo implements IBotCommand {
     private readonly _command = "serverinfo"
 
-    help(): string {
+    public help(): string {
         // The description of the command
         return "Gives a bit of server info";
     }

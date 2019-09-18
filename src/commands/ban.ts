@@ -18,12 +18,12 @@ export default class ban implements IBotCommand {
         // The command will ban the user mentioned
         // Will only ban the first user if more than one are mentioned
 
-        let mentionedUser = msgObject.mentions.users.first();
-        let suppliedReason = args.slice(1).join(" ") || "";
+        const mentionedUser = msgObject.mentions.users.first();
+        const suppliedReason = args.slice(1).join(" ") || "";
         let banLog = `${msgObject.author.username}: ${suppliedReason}`;
 
         // Delete the command
-        msgObject.delete(0)
+        msgObject.delete()
             .catch(console.error);
 
         // Checks if that user can use the bot to ban other people

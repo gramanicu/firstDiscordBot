@@ -19,11 +19,11 @@ export default class kick implements IBotCommand {
         // Will only kick the first user if more than one are mentioned
 
         let mentionedUser = msgObject.mentions.users.first();
-        let suppliedReason = args.slice(1).join(" ") || "";
+        const suppliedReason = args.slice(1).join(" ") || "";
         let kickLog = `${msgObject.author.username}: ${suppliedReason}`;
 
         // Delete the command
-        msgObject.delete(0)
+        msgObject.delete()
             .catch(console.error);
 
         // Checks if that user can use the bot to kick other people
