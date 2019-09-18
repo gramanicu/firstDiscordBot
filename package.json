@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/gramanicu/fistDiscordBot#readme",
   "dependencies": {
+    "@types/node": "^12.7.5",
     "discord.js": "^11.5.1"
   }
 }
