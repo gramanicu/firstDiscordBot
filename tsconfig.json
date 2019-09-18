@@ -5,7 +5,7 @@
         "outDir": "dist",
         "strict": true,
         "skipLibCheck": true,
-        "strictNullChecks": true,
+        "strictNullChecks": false,
         "inlineSourceMap": true,
         "moduleResolution": "node"
     },

@@ -6,7 +6,7 @@ export default class serverinfo implements IBotCommand {
 
     help(): string {
         // The description of the command
-        return "";
+        return "Gives a bit of server info";
     }
 
     isThisCommand(command: string): boolean {

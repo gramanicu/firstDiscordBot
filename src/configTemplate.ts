@@ -4,6 +4,8 @@ export let config = {
     "commands": [           // The commands for the bot
         "kick",
         "ban",
-        "purge"
+        "purge",
+        "serverinfo",
+        "vote"
     ]
 }
