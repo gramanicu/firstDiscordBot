@@ -7,5 +7,5 @@ export let config = {
         "purge",
         "serverinfo",
         "vote"
-    ]
+    ],
 }

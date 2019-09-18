@@ -50,6 +50,4 @@ export default class kick implements IBotCommand {
         msgObject.guild.member(mentionedUser).kick(kickLog)
             .catch(console.error);
     }
-
-
 }
