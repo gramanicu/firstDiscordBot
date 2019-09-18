@@ -29,7 +29,7 @@ client.on("message", msg => {
 
 async function handleCommand(msg: Discord.Message) {
     // Split the string into the command and all of the args
-    let command = msg.content.split(" ")[0].replace(ConfigFile.config.prefix, "");
+    let command = msg.content.split(" ")[0].replace(ConfigFile.config.prefix, "").toLowerCase();
     let args = msg.content.split(" ").slice(1);
 
     // Loop through all the loaded commands

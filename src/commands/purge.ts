@@ -14,24 +14,23 @@ export default class purge implements IBotCommand {
         return command === this._command;
     }
 
-    runCommand(args: string[], msgObject: Discord.Message, client: Discord.Client): void {
-        // Delete the command from the channel
-        msgObject.delete(0);
-
+    async runCommand(args: string[], msgObject: Discord.Message, client: Discord.Client): Promise<void> {
         // Make sure that the person using the command is an Admin
         if (!msgObject.member.hasPermission("ADMINISTRATOR")) {
             msgObject.channel.send(`Sorry ${msgObject.author.username} but this command is only for Admins`)
                 .then(msg => {
-                    (msg as Discord.Message).delete(5000);
+                    (msg as Discord.Message).delete(5000)
+                        .catch(console.error);        
                 });
             return;
         }
 
         // Make sure that they have said how many messages to delete
-        if(!args[0]) {
+        if (!args[0]) {
             msgObject.channel.send(`Sorry ${msgObject.author.username} but you must supply a number of messages to be deleted`)
                 .then(msg => {
-                    (msg as Discord.Message).delete(5000);
+                    (msg as Discord.Message).delete(5000)
+                        .catch(console.error);        
                 });
             return;
         }
@@ -40,24 +39,25 @@ export default class purge implements IBotCommand {
         let numberOfMessages = Number(args[0]);
 
         // Checks if the argument was a number
-        if(isNaN(numberOfMessages)) {
+        if (isNaN(numberOfMessages)) {
             msgObject.channel.send(`Sorry ${msgObject.author.username} but that isn't a valid number`)
                 .then(msg => {
-                    (msg as Discord.Message).delete(5000);
+                    (msg as Discord.Message).delete(5000)
+                        .catch(console.error);          
                 });
             return;
         }
 
         numberOfMessages = Math.round(numberOfMessages);
-        
+        numberOfMessages = numberOfMessages + 1;
+
         // Limit the number to 100 (Discord Limit)
         numberOfMessages = numberOfMessages > 100 ? 100 : numberOfMessages;
-        
+
 
         // Deletes the desired number of messages
         msgObject.channel.bulkDelete(numberOfMessages)
             .catch(console.error);
-
     }
 
 
