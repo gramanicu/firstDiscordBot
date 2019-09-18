@@ -28,7 +28,8 @@ client.on("guildMemberAdd", member => {
 })
 
 client.on("guildMemberRemove", member => {
-    let welcomeChannel = member.guild.channels.find(channel => channel.name === "github") as Discord.TextChannel;
+    let welcomeChannelName = "general";
+    let welcomeChannel = member.guild.channels.find(channel => channel.name === welcomeChannelName) as Discord.TextChannel;
     welcomeChannel.send(`We are sorry that you had to go :( ${member.displayName}!`);
 
 })
