@@ -10,6 +10,7 @@ loadCommands(`${__dirname}/commands`)
 
 client.on("ready", () => {
     // Set the bot's activity
+    console.log("Bot is online!");
     client.user.setActivity("Papa Pewds", {type: "WATCHING"});
 })
 
