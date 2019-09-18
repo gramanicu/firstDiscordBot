@@ -7,8 +7,7 @@
         "skipLibCheck": true,
         "strictNullChecks": false,
         "inlineSourceMap": true,
-        "moduleResolution": "node",
-        "rootDir": "./"
+        "moduleResolution": "node"
     },
     "include": [
         "src"
