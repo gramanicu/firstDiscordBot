@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "a discord bot used to learn the api",
   "main": "index.ts",
+  "engines": {
+    "node": "10.x"
+  },
   "scripts": {
     "start": "node build/index.js",
     "build": "tsc"
