@@ -4,8 +4,7 @@
   "description": "a discord bot used to learn the api",
   "main": "index.ts",
   "scripts": {
-    "build": "tsc -p tsconfig.json",
-    "run": "node ./dist/"
+    "web": "node ./dist/"
   },
   "repository": {
     "type": "git",

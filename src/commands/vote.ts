@@ -19,7 +19,14 @@ export default class vote implements IBotCommand {
         const timeout = 10000;
         msgObject.delete(0);
 
-        if (args.length < 1) { return; }
+        if (args.length < 1) {
+            msgObject.channel.send(`Sorry ${msgObject.author.username} but you must supply a vote topic`)
+                .then(msg => {
+                    (msg as Discord.Message).delete(5000)
+                        .catch(console.error);        
+                });
+            return;
+        }
 
         // Create a new vote embed
         let voteEmbed = new Discord.RichEmbed()
@@ -43,8 +50,8 @@ export default class vote implements IBotCommand {
         let resultsEmbed = new Discord.RichEmbed()
             .setTitle("Vote Results")
             .setDescription(`Results For The vote: ${args.join(" ")}`)
-            .addField("✅:", `${results.get("✅").count - 1} Votes`)
-            .addField("❎:", `${results.get("❎").count - 1} Votes`)
+            .addField("✅:", `${results.get("✅") ? results.get("✅").count - 1 : 0} Votes`)
+            .addField("❎:", `${results.get("❎") ? results.get("❎").count - 1 : 0} Votes`)
 
         // Send the vote results
         msgObject.channel.send(resultsEmbed);

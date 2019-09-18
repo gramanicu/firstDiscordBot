@@ -28,8 +28,8 @@ client.on("guildMemberAdd", member => {
 })
 
 client.on("guildMemberRemove", member => {
-    let welcomeChannelName = "general";
-    let welcomeChannel = member.guild.channels.find(channel => channel.name === welcomeChannelName) as Discord.TextChannel;
+    
+    let welcomeChannel = member.guild.channels.find(channel => channel.name === "github") as Discord.TextChannel;
     welcomeChannel.send(`We are sorry that you had to go :( ${member.displayName}!`);
 
 })
@@ -86,4 +86,4 @@ function loadCommands(commandsPath: string) {
 }
 
 // Login the bot into the server
-client.login(ConfigFile.config.token);
+client.login(process.env.DISCORD_BOT_TOKEN || ConfigFile.config.token);
