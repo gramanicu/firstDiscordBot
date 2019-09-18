@@ -77,15 +77,4 @@ const handleCommand = async (msg: Discord.Message) => {
                 // Go to the next iteration if not
                 continue;
             }
-
-            // Pause execution while running the command
-            await commandClass.runCommand(args, msg, client);
-        } catch(exception) {
-            // If there is an error, log it
-            console.log(exception);
-        }
-    }
-}
-
-// Login the bot into the server
 client.login(process.env.DISCORD_BOT_TOKEN || ConfigFile.config.token);

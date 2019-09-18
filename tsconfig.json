@@ -6,6 +6,7 @@
         "strict": true,
         "skipLibCheck": true,
         "strictNullChecks": false,
+        "removeComments": true,
         "inlineSourceMap": true,
         "moduleResolution": "node"
     },
