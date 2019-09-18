@@ -1,8 +1,8 @@
 {
   "name": "firstbot",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "a discord bot used to learn the api",
-  "main": "index.ts",
+  "main": "build/index.ts",
   "engines": {
     "node": "10.x"
   },
