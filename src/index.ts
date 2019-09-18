@@ -9,8 +9,8 @@ let commands: IBotCommand[] = [];
 loadCommands(`${__dirname}/commands`)
 
 client.on("ready", () => {
-    // Let us know that the bot is online
-    console.log("Ready to go!");
+    // Set the bot's activity
+    client.user.setActivity("Papa Pewds", {type: "WATCHING"});
 })
 
 client.on("message", msg => {

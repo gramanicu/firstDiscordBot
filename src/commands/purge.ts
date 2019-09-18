@@ -16,7 +16,7 @@ export default class purge implements IBotCommand {
 
     runCommand(args: string[], msgObject: Discord.Message, client: Discord.Client): void {
         // Delete the command from the channel
-        msgObject.delete();
+        msgObject.delete(0);
 
         // Make sure that the person using the command is an Admin
         if (!msgObject.member.hasPermission("ADMINISTRATOR")) {
@@ -40,7 +40,7 @@ export default class purge implements IBotCommand {
         let numberOfMessages = Number(args[0]);
 
         // Checks if the argument was a number
-        if(numberOfMessages == NaN) {
+        if(isNaN(numberOfMessages)) {
             msgObject.channel.send(`Sorry ${msgObject.author.username} but that isn't a valid number`)
                 .then(msg => {
                     (msg as Discord.Message).delete(5000);
@@ -49,6 +49,10 @@ export default class purge implements IBotCommand {
         }
 
         numberOfMessages = Math.round(numberOfMessages);
+        
+        // Limit the number to 100 (Discord Limit)
+        numberOfMessages = numberOfMessages > 100 ? 100 : numberOfMessages;
+        
 
         // Deletes the desired number of messages
         msgObject.channel.bulkDelete(numberOfMessages)

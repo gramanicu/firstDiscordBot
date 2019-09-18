@@ -23,7 +23,7 @@ export default class ban implements IBotCommand {
         let banLog = `${msgObject.author.username}: ${suppliedReason}`;
 
         // Delete the command
-        msgObject.delete();
+        msgObject.delete(0);
 
         // Checks if that user can use the bot to ban other people
         if (!msgObject.member.hasPermission("ADMINISTRATOR")) {

@@ -23,7 +23,7 @@ export default class kick implements IBotCommand {
         let kickLog = `${msgObject.author.username}: ${suppliedReason}`;
 
         // Delete the command
-        msgObject.delete();
+        msgObject.delete(0);
 
         // Checks if that user can use the bot to kick other people
         if (!msgObject.member.hasPermission("ADMINISTRATOR")) {
