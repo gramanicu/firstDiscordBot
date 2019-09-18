@@ -3,7 +3,7 @@ import { IBotCommand } from "../api";
 
 export default class kick implements IBotCommand {
     private readonly _command = "kick"
-    
+
     help(): string {
         // Command description
         return "Kick mentioned user";
@@ -22,23 +22,30 @@ export default class kick implements IBotCommand {
         let suppliedReason = args.slice(1).join(" ") || "";
         let kickLog = `${msgObject.author.username}: ${suppliedReason}`;
 
-        msgObject.delete(0);
+        // Delete the command
+        msgObject.delete();
 
         // Checks if that user can use the bot to kick other people
-        if(!msgObject.member.hasPermission("ADMINISTRATOR")) {
-            msgObject.channel.send(`Nice try ${msgObject.author.username}, but you can't kick other users`);
+        if (!msgObject.member.hasPermission("ADMINISTRATOR")) {
+            msgObject.channel.send(`Nice try ${msgObject.author.username}, but you can't kick other users`)
+                .then(msg => {
+                    (msg as Discord.Message).delete(5000);
+                });
             return;
         }
 
         // Check's if a user was specified
-        if(!mentionedUser) {
-            msgObject.channel.send(`Sorry ${msgObject.author.username}, I couldn't find that user`);
+        if (!mentionedUser) {
+            msgObject.channel.send(`Sorry ${msgObject.author.username}, I couldn't find that user`)
+                .then(msg => {
+                    (msg as Discord.Message).delete(5000);
+                });
             return;
         }
 
         // Kicks the user
         msgObject.guild.member(mentionedUser).kick(kickLog)
-            .then(console.log)
+            //.then(console.log)
             .catch(console.error);
     }
 

@@ -17,6 +17,9 @@ client.on("message", msg => {
     // Ignore the message if it was sent by the bot
     if(msg.author.bot) { return; }
 
+    // Ignore direct messages
+    if(msg.channel.type == "dm") { return; }
+
     // Ignore messages that don't start with the prefix
     if(!msg.content.startsWith(ConfigFile.config.prefix)) { return; }
 

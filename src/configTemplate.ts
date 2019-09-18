@@ -3,6 +3,7 @@ export let config = {
     "prefix": "do",         // Command prefix,
     "commands": [           // The commands for the bot
         "kick",
-        "ban"
+        "ban",
+        "purge"
     ]
 }
