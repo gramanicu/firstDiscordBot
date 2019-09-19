@@ -1,4 +1,4 @@
-name: Main GitHub Workflow
+name: Github Check
 
 on: [push]
 
