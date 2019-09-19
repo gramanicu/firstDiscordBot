@@ -1,37 +1,35 @@
-import * as Discord from "discord.js"
+import * as Discord from "discord.js";
 import { IBotCommand } from "../api";
 
-export default class serverinfo implements IBotCommand {
-    private readonly _command = "serverinfo"
+export default class Serverinfo implements IBotCommand {
+    private readonly command = "serverinfo";
 
     public help(): string {
         // The description of the command
         return "Gives a bit of server info";
     }
 
-    isThisCommand(command: string): boolean {
+    public isThisCommand(command: string): boolean {
         // Checks if the string is actually this command
-        return command === this._command;
+        return command === this.command;
     }
 
-    async runCommand(args: string[], msgObject: Discord.Message, client: Discord.Client): Promise<void> {
+    public async runCommand(args: string[], msgObject: Discord.Message, client: Discord.Client): Promise<void> {
         // Delete the command
         msgObject.delete()
-            .catch(console.error);
+            .catch(process.stdout.write);
 
         // Create a new embed with server info
-        let embed = new Discord.RichEmbed()
+        const embed = new Discord.RichEmbed()
                         .setColor([0, 255, 0])
                         .setTitle("Server Info")
                         .setFooter("This is pretty cool")
                         .setImage(client.user.avatarURL)
                         .setDescription("Welcome to our Server !")
                         .addField("Server Count:", `Our server currently has ${msgObject.guild.memberCount} members!`);
-        
+
         // Send the embed
         msgObject.channel.send(embed)
-            .catch(console.error);
+            .catch(process.stdout.write);
     }
-
-
 }

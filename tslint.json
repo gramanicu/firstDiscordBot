@@ -1,15 +1,17 @@
 {
-    "defaultSeverity": "error",
-    "extends": [
-        "tslint:recommended"
-    ],
-    "jsRules": {},
+    "extends": ["tslint:latest", "tslint-config-prettier", "tslint-immutable"],
     "rules": {
+        "no-implicit-dependencies": [true, "dev"],
+        "no-var-keyword": true,
+        "no-parameter-reassignment": true,
+        "typedef": [true, "call-signature"],
+        "readonly-keyword": true,
+        "no-object-mutation": true,
+        "no-delete": true,
+        "no-mixed-interface": true,
         "no-trailing-whitespace": [true, "always"],
         "prefer-const": [true, {"destructuring": "any"}],
         "semicolon": [true, "always"],
-        "space-before-function-paren": [true, "never"],
-        "quotemark": [true, "single"]
-      },
-    "rulesDirectory": []
+        "space-before-function-paren": [true, "never"]
+    }
 }

@@ -1,28 +1,28 @@
-import * as Discord from "discord.js"
+import * as Discord from "discord.js";
 import { IBotCommand } from "../api";
 
-export default class purge implements IBotCommand {
-    private readonly _command = "purge"
+export default class Purge implements IBotCommand {
+    private readonly command = "purge";
 
-    help(): string {
+    public help(): string {
         // The description of the command
         return "(Admin Only) Deletes the specified number of the messages from the channel";
     }
 
-    isThisCommand(command: string): boolean {
+    public isThisCommand(command: string): boolean {
         // Checks if the string is actually this command
-        return command === this._command;
+        return command === this.command;
     }
 
     public async runCommand(args: string[], msgObject: Discord.Message, client: Discord.Client): Promise<void> {
         const PURGELIMIT = 100;
-        
+
         // Make sure that the person using the command is an Admin
         if (!msgObject.member.hasPermission("ADMINISTRATOR")) {
             msgObject.channel.send(`Sorry ${msgObject.author.username} but this command is only for Admins`)
                 .then(msg => {
                     (msg as Discord.Message).delete(5000)
-                        .catch(console.error);        
+                        .catch(process.stdout.write);
                 });
             return;
         }
@@ -32,7 +32,7 @@ export default class purge implements IBotCommand {
             msgObject.channel.send(`Sorry ${msgObject.author.username} but you must supply a number of messages to be deleted`)
                 .then(msg => {
                     (msg as Discord.Message).delete(5000)
-                        .catch(console.error);        
+                        .catch(process.stdout.write);
                 });
             return;
         }
@@ -45,7 +45,7 @@ export default class purge implements IBotCommand {
             msgObject.channel.send(`Sorry ${msgObject.author.username} but that isn't a valid number`)
                 .then(msg => {
                     (msg as Discord.Message).delete(5000)
-                        .catch(console.error);          
+                        .catch(process.stdout.write);
                 });
             return;
         }
@@ -59,7 +59,7 @@ export default class purge implements IBotCommand {
 
         // Deletes the desired number of messages
         msgObject.channel.bulkDelete(numberOfMessages)
-            .catch(console.error);
+            .catch(process.stdout.write);
     }
 
 

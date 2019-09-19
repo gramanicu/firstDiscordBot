@@ -1,37 +1,37 @@
-import * as Discord from "discord.js"
+import * as Discord from "discord.js";
 import { IBotCommand } from "../api";
 
-export default class kick implements IBotCommand {
-    private readonly _command = "kick"
+export default class Kick implements IBotCommand {
+    private readonly command = "kick";
 
-    help(): string {
+    public help(): string {
         // Command description
         return "Kick mentioned user";
     }
 
-    isThisCommand(command: string): boolean {
+    public isThisCommand(command: string): boolean {
         // Checks if the string is actually this command
-        return command === this._command;
+        return command === this.command;
     }
 
-    async runCommand(args: string[], msgObject: Discord.Message, client: Discord.Client): Promise<void> {
+    public async runCommand(args: string[], msgObject: Discord.Message, client: Discord.Client): Promise<void> {
         // The command will kick the user mentioned
         // Will only kick the first user if more than one are mentioned
 
-        let mentionedUser = msgObject.mentions.users.first();
+        const mentionedUser = msgObject.mentions.users.first();
         const suppliedReason = args.slice(1).join(" ") || "";
-        let kickLog = `${msgObject.author.username}: ${suppliedReason}`;
+        const kickLog = `${msgObject.author.username}: ${suppliedReason}`;
 
         // Delete the command
         msgObject.delete()
-            .catch(console.error);
+            .catch(process.stdout.write);
 
         // Checks if that user can use the bot to kick other people
         if (!msgObject.member.hasPermission("ADMINISTRATOR")) {
             msgObject.channel.send(`Nice try ${msgObject.author.username}, but you can't kick other users`)
                 .then(msg => {
                     (msg as Discord.Message).delete(5000)
-                        .catch(console.error);
+                        .catch(process.stdout.write);
                 });
             return;
         }
@@ -41,13 +41,13 @@ export default class kick implements IBotCommand {
             msgObject.channel.send(`Sorry ${msgObject.author.username}, I couldn't find that user`)
                 .then(msg => {
                     (msg as Discord.Message).delete(5000)
-                        .catch(console.error);        
+                        .catch(process.stdout.write);
                 });
             return;
         }
 
         // Kicks the user
         msgObject.guild.member(mentionedUser).kick(kickLog)
-            .catch(console.error);
+            .catch(process.stdout.write);
     }
 }

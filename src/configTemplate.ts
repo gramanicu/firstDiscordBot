@@ -1,11 +1,11 @@
-export let config = {
+export const config = {
     commands: [          // The commands for the bot
-        'kick',
-        'ban',
-        'purge',
-        'serverinfo',
-        'vote',
+        "kick",
+        "ban",
+        "purge",
+        "serverinfo",
+        "vote",
     ],
-    prefix: '!',         // Command prefix,
-    token: '',           // The bot key
+    prefix: "!",         // Command prefix,
+    token: "",           // The bot key
 };

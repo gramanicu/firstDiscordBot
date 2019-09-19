@@ -1,20 +1,20 @@
-import * as Discord from "discord.js"
+import * as Discord from "discord.js";
 import { IBotCommand } from "../api";
 
-export default class vote implements IBotCommand {
-    private readonly _command: string = "vote"
+export default class Vote implements IBotCommand {
+    private readonly command: string = "vote";
 
     public help(): string {
         // The description of the command
         return "Creates a basic vote";
     }
 
-    isThisCommand(command: string): boolean {
+    public isThisCommand(command: string): boolean {
         // Checks if the string is actually this command
-        return command === this._command;
+        return command === this.command;
     }
 
-    async runCommand(args: string[], msgObject: Discord.Message, client: Discord.Client): Promise<void> {
+    public async runCommand(args: string[], msgObject: Discord.Message, client: Discord.Client): Promise<void> {
         // The vote duration
         const timeout = 10000;
         msgObject.delete(0);
@@ -23,18 +23,18 @@ export default class vote implements IBotCommand {
             msgObject.channel.send(`Sorry ${msgObject.author.username} but you must supply a vote topic`)
                 .then(msg => {
                     (msg as Discord.Message).delete(5000)
-                        .catch(console.error);        
+                        .catch(process.stdout.write);
                 });
             return;
         }
 
         // Create a new vote embed
-        let voteEmbed = new Discord.RichEmbed()
+        const voteEmbed = new Discord.RichEmbed()
             .setTitle("Vote")
-            .setDescription(args.join(" "))
+            .setDescription(args.join(" "));
 
         // Wait untill the message is sent
-        let voteMessage = await msgObject.channel.send(voteEmbed);
+        const voteMessage = await msgObject.channel.send(voteEmbed);
 
         // Add the reaction for the vote
         await (voteMessage as Discord.Message).react("✅");
@@ -44,16 +44,16 @@ export default class vote implements IBotCommand {
         const filter = (reaction: Discord.MessageReaction) => reaction.emoji.name === "✅" || reaction.emoji.name === "❎";
 
         // Wait for the specified amount of time the vote results
-        const results = await (voteMessage as Discord.Message).awaitReactions(filter, { time: timeout })
-        
+        const results = await (voteMessage as Discord.Message).awaitReactions(filter, { time: timeout });
+
         const initialVoteCount = 0;
 
         // Create a embed with the vote results
-        let resultsEmbed = new Discord.RichEmbed()
+        const resultsEmbed = new Discord.RichEmbed()
             .setTitle("Vote Results")
             .setDescription(`Results For The vote: ${args.join(" ")}`)
             .addField("✅:", `${results.get("✅") ? results.get("✅").count - 1 : initialVoteCount} Votes`)
-            .addField("❎:", `${results.get("❎") ? results.get("❎").count - 1 : initialVoteCount} Votes`)
+            .addField("❎:", `${results.get("❎") ? results.get("❎").count - 1 : initialVoteCount} Votes`);
 
         // Send the vote results
         msgObject.channel.send(resultsEmbed);
