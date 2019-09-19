@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: max/awesome-lint@v2.0.0
+      - uses: bltavares/actions/tslint@master
       - name: Check the coding style (Lint)
         run: |
           tslint src/*.ts{,x}
