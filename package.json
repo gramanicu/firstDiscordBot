@@ -28,6 +28,7 @@
   "dependencies": {
     "@types/node": "^12.7.5",
     "discord.js": "^11.5.1",
+    "tslint": "^5.20.0",
     "typescript": "^3.6.3"
   }
 }
