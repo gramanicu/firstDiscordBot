@@ -7,5 +7,6 @@ This is a project to learn how to create Discord bots
 Notes
 
 -   commands need to be lowercase
+-   implement music API from spotify - https://www.npmjs.com/package/node-spotify-api
 
-© 2019 Grama Nicolae
+© 2020 Grama Nicolae
