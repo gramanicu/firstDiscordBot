@@ -1,11 +1,16 @@
 import * as Discord from "discord.js";
 import { IBotCommand } from "./api";
 import * as ConfigFile from "./config";
+import { MusicManager } from "./music-manager"
 
 const client: Discord.Client = new Discord.Client();
+const music: MusicManager = new MusicManager();
+
+export { music };
 
 const loadCommands = (commandsPath: string) => {
     const cmds: IBotCommand[] = [];
+    
     // Exit if there are no config file or no commands
     if (!ConfigFile.config || (ConfigFile.config.commands as string[]).length === 0) { return; }
 

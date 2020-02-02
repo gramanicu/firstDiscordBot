@@ -5,7 +5,11 @@ export const config = {
         "purge",
         "serverinfo",
         "vote",
+        "play",
+        "stop",
+        "skip",
+        "disconnect"
     ],
-    prefix: "!",         // Command prefix,
+    prefix: "?",         // Command prefix,
     token: "",           // The bot key
 };

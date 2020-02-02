@@ -12,7 +12,7 @@
     "postinstall": "bash deployConfig.sh && npm run build-ts",
     "start": "npm run serve",
     "serve": "node build/index.js",
-    "watch-node": "nodemon dist/server.js",
+    "watch-node": "nodemon build/index.js",
     "watch-ts": "tsc -w"
   },
   "repository": {
@@ -28,8 +28,11 @@
   "dependencies": {
     "@types/node": "^12.7.5",
     "discord.js": "^11.5.1",
+    "opusscript": "0.0.7",
     "tslint": "^5.20.0",
-    "typescript": "^3.6.3"
+    "typescript": "^3.6.3",
+    "ytdl-core": "^1.0.7",
+    "ytdl-core-discord": "^1.1.0"
   },
   "devDependencies": {
     "tslint-config-prettier": "^1.18.0",

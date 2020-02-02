@@ -1,13 +1,14 @@
 {
     "compilerOptions": {
+        "allowJs": true,
         "target": "es6",
         "module": "commonjs",
         "outDir": "build",
+        "inlineSourceMap": true,
         "strict": true,
         "skipLibCheck": true,
         "strictNullChecks": false,
         "removeComments": true,
-        "inlineSourceMap": true,
         "moduleResolution": "node"
     },
     "include": [
@@ -15,7 +16,7 @@
     ],
     "exclude": [
         "node_modules",
-        "src/configTemplate.ts",
+        "src/config-template.ts",
         "src/commands/template.ts"
     ]
 }
